@@ -1,0 +1,19 @@
+.login {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+
+  .box {
+    border-radius: 0 0 5px 5px ;
+  }
+  .panel {
+    margin-bottom: 0;
+    .panel-heading {
+      background-color: #f3f5f8;
+      border-bottom: 0;
+    }
+  }
+}
+
+
