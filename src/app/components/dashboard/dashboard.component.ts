@@ -12,12 +12,6 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
 
-  public options = {
-    position: ['bottom', 'left'],
-    timeOut: 5000,
-    lastOnBottom: true
-  };
-
   constructor(private route: Router, private notify: NotificationsService, private auth: AuthenticationService) {}
 
   ngOnInit() {
@@ -25,7 +19,7 @@ export class DashboardComponent implements OnInit {
       this.route.navigate(['']);
 
       // Create a Notification
-      this.notify.alert('Some Alert', 'Need Some alert badly');
+      this.notify.error('Notification', 'You need to log in to access that page!');
     }
   }
 }

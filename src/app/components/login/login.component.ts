@@ -39,10 +39,10 @@ export class LoginComponent implements OnInit {
   login() {
     this.authService.login(this.loginForm.value.email , this.loginForm.value.password).subscribe(data => {
       this.router.navigate(['/home']);
-      this.notify.success('Some Alert', 'Need Some alert badly');
+      this.notify.success('Welcome', 'Login Successful');
     }, error => {
-      console.log(error)
-      this.notify.error('Some Alert', 'Need Some alert badly');
+      console.log(error._body[0]);
+      this.notify.error('Error', error._body);
     });
   }
 }

@@ -15,7 +15,6 @@ export class NavComponent implements OnInit {
   ngOnInit() {
     if (localStorage.getItem('currentUser')) {
       const currentUser = localStorage.getItem('currentUser');
-      // this.email = currentUser.user.email;
     }
   }
 
@@ -26,7 +25,7 @@ export class NavComponent implements OnInit {
     // Redirect back to login page
     this.router.navigate(['']);
 
-    this.notify.alert('Some Alert', 'Need Some alert badly');
+    this.notify.alert('Notification', 'You have being logged out successfully, see you later.');
   }
 
 }
