@@ -18,4 +18,8 @@ export class AuthenticationService {
         }
       });
   }
+
+  isLoggedIn() {
+    return localStorage.getItem('currentUser');
+  }
 }

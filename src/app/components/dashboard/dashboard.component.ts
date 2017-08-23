@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterContentInit } from '@angular/core';
+import { NotificationsService } from 'angular2-notifications';
+import { AuthenticationService } from '../../services/authentication.service';
+
+
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,12 +12,20 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private route: Router) {}
+  public options = {
+    position: ['bottom', 'left'],
+    timeOut: 5000,
+    lastOnBottom: true
+  };
+
+  constructor(private route: Router, private notify: NotificationsService, private auth: AuthenticationService) {}
 
   ngOnInit() {
-    if (! localStorage.getItem('currentUser')) {
-        this.route.navigate(['']);
+    if (! this.auth.isLoggedIn() ) {
+      this.route.navigate(['']);
+
+      // Create a Notification
+      this.notify.alert('Some Alert', 'Need Some alert badly');
     }
   }
-
 }

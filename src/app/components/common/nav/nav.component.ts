@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { NotificationsService } from 'angular2-notifications';
 
 @Component({
   selector: 'app-nav',
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class NavComponent implements OnInit {
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private notify: NotificationsService) {}
 
 
   ngOnInit() {
@@ -25,6 +25,8 @@ export class NavComponent implements OnInit {
 
     // Redirect back to login page
     this.router.navigate(['']);
+
+    this.notify.alert('Some Alert', 'Need Some alert badly');
   }
 
 }

@@ -5,6 +5,7 @@ import { ReactiveFormsModule} from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './routes/app-routing.module';
 import { RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 // Component
@@ -16,6 +17,9 @@ import { NavComponent } from './components/common/nav/nav.component';
 // Services
 import { AuthenticationService } from './services/authentication.service';
 import { ApiFactory } from './helpers/index';
+
+// Plugins
+import { SimpleNotificationsModule, NotificationsService } from 'angular2-notifications';
 
 // Style
 import '../styles/styles.scss';
@@ -34,11 +38,14 @@ import '../styles/styles.scss';
     ReactiveFormsModule,
     HttpModule,
     AppRoutingModule,
-    RouterModule
+    RouterModule,
+    BrowserAnimationsModule,
+    SimpleNotificationsModule.forRoot()
   ],
   providers: [
     AuthenticationService,
-    ApiFactory
+    ApiFactory,
+    NotificationsService
   ],
   bootstrap: [AppComponent]
 })

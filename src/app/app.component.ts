@@ -5,4 +5,12 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {}
+export class AppComponent {
+
+  public options = {
+    position: ['top', 'right'],
+    timeOut: 5000,
+    lastOnBottom: true
+  };
+
+}

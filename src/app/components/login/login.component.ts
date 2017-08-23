@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from '../../services/authentication.service';
 import { Router } from '@angular/router';
+import { NotificationsService } from 'angular2-notifications';
+
 
 @Component({
   selector: 'login',
@@ -13,11 +15,13 @@ export class LoginComponent implements OnInit {
   email: FormControl;
   password: FormControl;
 
-  constructor(private authService: AuthenticationService, private router: Router) {}
+  constructor(private authService: AuthenticationService, private router: Router, private notify: NotificationsService) {}
 
   ngOnInit() {
     if (localStorage.getItem('currentUser')) {
       this.router.navigate(['/home']);
+      this.notify.error('Some Alert', 'Need Some alert badly');
+
     }
     this.createForm();
   }
@@ -34,8 +38,11 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.authService.login(this.loginForm.value.email , this.loginForm.value.password).subscribe(data => {
-      // if is set currentUser redirects
-      console.log(localStorage.getItem('currentUser'));
+      this.router.navigate(['/home']);
+      this.notify.success('Some Alert', 'Need Some alert badly');
+    }, error => {
+      console.log(error)
+      this.notify.error('Some Alert', 'Need Some alert badly');
     });
   }
 }
