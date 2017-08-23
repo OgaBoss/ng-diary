@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from '../../services/authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'login',
@@ -12,9 +13,12 @@ export class LoginComponent implements OnInit {
   email: FormControl;
   password: FormControl;
 
-  constructor(private authService: AuthenticationService) {}
+  constructor(private authService: AuthenticationService, private router: Router) {}
 
   ngOnInit() {
+    if (localStorage.getItem('currentUser')) {
+      this.router.navigate(['/home']);
+    }
     this.createForm();
   }
 
