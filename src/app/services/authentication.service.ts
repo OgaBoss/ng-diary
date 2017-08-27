@@ -12,9 +12,11 @@ export class AuthenticationService {
 
   login(email: string, password: string) {
     return this.api.post('/auth/login', {email: email, password: password}, false)
-      .map((response: LoginResponse) => {
-        if (response && response.token) {
+      .map((response) => {
+        const token = response.token;
+        if (response && token) {
           localStorage.setItem('currentUser', JSON.stringify(response));
+          return response;
         }
       });
   }
